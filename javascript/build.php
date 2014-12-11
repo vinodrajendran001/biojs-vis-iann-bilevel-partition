@@ -48,6 +48,7 @@ $jsFiles = array(
 					"/lib/jquery.dataTables.min.js",
 					"/widgets/TableWidget.js",
 					"/widgets/PieWidget.js",
+					"/widgets/TreeMapWidget.js",
 					"/js/itico.theme.js");
 print "CSS files";
 $myFile = dirname(__FILE__) . "/itico.min.css";
