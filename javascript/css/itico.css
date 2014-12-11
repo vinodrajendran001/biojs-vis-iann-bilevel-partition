@@ -4,6 +4,10 @@ body {
   font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size: 12px;
   line-height: 18px;
+  margin: auto;
+  position: relative;
+  width: 960px;
+  height: 500px;
 }
 
 a {
@@ -95,6 +99,12 @@ input.iann_field_search {
   height: 450px; 
   width: 700px; 
 }
+
+#iann_partition { 
+  height: 450px; 
+  width: 700px; 
+}
+
 
 #iann_calendar {
   width: 700px;
@@ -300,4 +310,13 @@ table.fc-border-separate {
 
 #iann_table_content thead {
 	background-color: #EEEEEE;
+}
+/*TREEMAP NODE*/
+div.node {
+  border: solid 1px white;
+  font: 10px sans-serif;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
 }

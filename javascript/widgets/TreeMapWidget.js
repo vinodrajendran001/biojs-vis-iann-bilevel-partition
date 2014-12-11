@@ -15,6 +15,8 @@
 				
 		if (Manager.currentTab==undefined || Manager.currentTab!='Partition Layout')
 				return;
+			
+
 			var self = this;
 			$(this.target).empty();
 			
@@ -81,9 +83,12 @@
 				      .style("background", function(d) { return d.children ? color(d.name) : null; })
 				      .text(function(d) { return d.children ? null : d.name; })
 					  .on("click", function(d) { //clickhandler function
-						  var self = env, meth = env.multivalue ? 'add' : 'set';			
+						  var self = env, meth = env.multivalue ? 'add' : 'set';	
+						  	console.log("meth value :"+self)	;
 							self[meth].call(self, d.name);
+
 							self.doRequest();
+							//$(this.target).append(AjaxSolr.theme('tag', facet, parseInt(objectedItems[i].count / maxCount * 10), self.clickHandler(facet)));
 					  }); 
 						  
 				  d3.selectAll("input").on("change", function change() {
