@@ -29,8 +29,12 @@
 				items = items.concat(this.facetLinks('keyword', doc.keyword));
 				if (doc.country)	items = items.concat(AjaxSolr.theme('facet_link', doc.country, this.facetHandler('country', doc.country)));
 				if (doc.city)		items = items.concat(AjaxSolr.theme('facet_link', doc.city, this.facetHandler('city', doc.city)));
+				//var test = [];
+				//test.push(field +":" +facet);
+				//console.log('result view :' + doc);
 				AjaxSolr.theme('list_items', '#links_' + doc.id, items);
 			}
+
 			this.initPagination();
 		},
 		initPagination: function () {

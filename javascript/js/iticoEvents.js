@@ -31,6 +31,13 @@ var Manager;
 			htmlResult+='				<div id="partition_div">';
 			htmlResult+='					<div id="iann_partition"></div>';
 			htmlResult+='				</div>';
+			htmlResult+='				<div id="bilevel_div">';
+			htmlResult+='					<div id="iann_bilevel"></div>';
+			htmlResult+='				</div>';
+			htmlResult+='				<div id="globe_div">';
+			htmlResult+='					<div id="iann_globe"></div>';
+			htmlResult+='				</div>';
+			
 			$('#'+divId).html(htmlResult);
 		};
 		var fillSearchTable = function (tableId) {
@@ -151,10 +158,26 @@ var Manager;
 		Manager.addWidget(new AjaxSolr.TreeMapWidget({
 		id: 'partition',
 		target: '#iann_partition',
-		field: 'keyword',
+		field: ['field','country','provider','keyword'],
 		width: 382,
 		height: 202,
 		margin: {top: 40,right: 10,bottom: 10,left: 10}
+	  }));
+	  	Manager.addWidget(new AjaxSolr.BilevelWidget({
+		id: 'bilevel',
+		target: '#iann_bilevel',
+		field: ['field','country','provider','keyword'],
+		width: 382,
+		height: 202,
+		margin: {top: 40,right: 10,bottom: 10,left: 10}
+	  }));
+
+		Manager.addWidget(new AjaxSolr.metaGlobeMap({
+		id: 'globe',
+		target: '#iann_globe',
+		field: ['field','country','provider','keyword'],
+		//trymorethanonce:true
+		
 	  }));
 		
 		Manager.addWidget(new AjaxSolr.CategorySelectorWidget({
@@ -167,9 +190,9 @@ var Manager;
 			id: 'simpleTabs',
 			target: '#result_tabs',
 			categories: [ 'event' ],
-			labels_id_per_category: [[ 'list_tab', 'map_tab','calendar_tab','table_tab','pie_tab','partition_tab' ]],
-			labels_per_category: [[ 'List', 'Map','Calendar','Table','Pie Graph','Partition Layout' ]],
-			targets_per_category: [[ '#result', '#map_div','#calendar_div','#table_div','#pie_div','#partition_div' ]]
+			labels_id_per_category: [[ 'list_tab', 'map_tab','calendar_tab','table_tab','pie_tab','partition_tab','bilevel_tab','globe_tab' ]],
+			labels_per_category: [[ 'List', 'Map','Calendar','Table','Pie Graph','TreeMap Partition','Bilevel Partition','3D Globe' ]],
+			targets_per_category: [[ '#result', '#map_div','#calendar_div','#table_div','#pie_div','#partition_div','#bilevel_div','#globe_div' ]]
 		}));
 
 		

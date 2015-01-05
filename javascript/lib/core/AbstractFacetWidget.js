@@ -85,11 +85,21 @@ AjaxSolr.AbstractFacetWidget = AjaxSolr.AbstractWidget.extend(
    * @returns {Function} Sends a request to Solr if it successfully adds a
    *   filter query with the given value.
    */
+   /*
   clickHandler: function (value) {
     var self = this;
     return function () {
       if (self.add(value)) {
         self.manager.doRequest(0);
+      }
+      return false;
+    }
+  }, */ //commented by vinod for treemap
+  clickHandler: function (value) {
+    var self = this, meth = this.multivalue ? 'add' : 'set';
+    return function () {
+      if (self[meth].call(self, value)) {
+        self.doRequest();
       }
       return false;
     }

@@ -33,38 +33,22 @@
       for (var i = 1, l = objectedItems.length; i < l; i++) {
         var facet = objectedItems[i].facet;
         
-        
-      
-
-        console.log("count="+objectedItems[i].count);
-
         jWord.push(facet);
 
         /*Assigning the range */
 
         jCount.push(objectedItems[i].count);
-        
-
-      
-                //$(this.target).append(AjaxSolr.theme('tag', facet, parseInt(objectedItems[i].count / maxCount * 10), self.clickHandler(facet)));
-          
+                
       }
 
-
-      console.log("AFTER objects legnth="+objectedItems.length);
-
-      console.log("AFTER words lenght="+jWord.length);
-
-      console.log("AFTER words="+jWord.toString());
       
 
 
-           var fill = d3.scale.category20();
+    var fill = d3.scale.category20();
 
       d3.layout.cloud().size([250, 250])
       
   .words(d3.zip(jWord, jCount).map(function(d) {
-         // console.log("here="+d);
           return {text: d[0], size: 10 + d[1]};
         }))
   
@@ -93,7 +77,24 @@ function draw(words) {
           return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
         })
         .text(function(d) { return d.text; })
-        .on("click", function(d,i) { alert("Hello world"); })
+        .on("click", function(d,i) { 
+          var fq = self.manager.store.values('fq');
+          self.manager.store.addByValue('fq', d.text);
+          self.manager.doRequest(0);
+          return true;
+
+         })
+          .on("mouseover", function(d,i) { 
+          d3.select(this)
+          .style("font-size", function(d) { return d.size + 10 + "px"; })
+
+         })
+          .on("mouseout", function(d,i) { 
+          d3.select(this)
+          .style("font-size", function(d) { return d.size + "px"; })
+
+         })
+
         ;
   }
 

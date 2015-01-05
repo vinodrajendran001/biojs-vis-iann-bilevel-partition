@@ -49,6 +49,8 @@ $jsFiles = array(
 					"/widgets/TableWidget.js",
 					"/widgets/PieWidget.js",
 					"/widgets/TreeMapWidget.js",
+					"/widgets/BilevelWidget.js",
+					"/widgets/metaGlobeMap.js"
 					"/js/itico.theme.js");
 print "CSS files";
 $myFile = dirname(__FILE__) . "/itico.min.css";

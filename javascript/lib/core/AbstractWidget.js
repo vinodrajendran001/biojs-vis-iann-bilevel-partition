@@ -59,5 +59,9 @@ AjaxSolr.AbstractWidget = AjaxSolr.Class.extend(
    *
    * <p>This method is executed after the Solr response is received.</p>
    */
-  afterRequest: function () {}
+  afterRequest: function () {},
+//added for teemap by vinod
+  doRequest: function (start, servlet) {
+    this.manager.doRequest(start || this.start, servlet || this.servlet);
+  }
 });

@@ -6,6 +6,8 @@
 		<link rel="stylesheet" type="text/css" href="css/itico.css" media="screen" />
 		<link rel='stylesheet' type='text/css' href='css/fullcalendar.css' /> <!-- for the calendar -->
 		<link rel='stylesheet' type='text/css' href='css/pagination.css' /> <!-- for the calendar -->
+		<link rel='stylesheet' type='text/css' href='css/mapStyle.css' /> <!-- for the calendar -->
+
 		<style type="text/css" title="currentStyle">
 			@import "css/jquery.dataTables.css";
 		</style>
@@ -15,10 +17,34 @@
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script> <!-- Used by the calendar-->
 		<!-- To apply Jquery plugins to dinamicly inserted elements -->
-		<script type="text/javascript" src="lib/jquery.livequery.js"></script>
+		
 		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" />
 
 		<!-- AjaxSolr library-->
+		
+
+		<!-- Required for the auto-complete widget-->
+		<!-- Not in use now! -->
+		<link rel="stylesheet" type="text/css" href="ext/jquery.autocomplete.css" media="screen" />
+		
+
+		<!-- Widget to select the visualization method-->
+		
+
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+		<script type='text/javascript' src='lib/d3.layout.cloud.js'></script>
+		 <script src="http://bl.ocks.org/blockspring/raw/847a40e23f68d6d7e8b5/518fd43a5efe941b38a54988f6560410aa7963cb/cloud.js" charset="utf-8"> </script>
+
+		 	<!-- Widget to display the current selection in a Bilevel Partition -->
+		
+	<!-- Widget to display the 3D Map -->
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="http://d3js.org/queue.v1.min.js"></script>
+    
+
+	</head>
+	<body>
 		<script type="text/javascript" src="lib/core/Core.js"></script>
 		<script type="text/javascript" src="lib/core/AbstractManager.js"></script>
 		<script type="text/javascript" src="lib/core/Parameter.js"></script>
@@ -27,6 +53,9 @@
 		<script type="text/javascript" src="lib/core/AbstractFacetWidget.js"></script>
 		<script type="text/javascript" src="lib/managers/Manager.jquery.js"></script>
 		<script type="text/javascript" src="lib/helpers/jquery/ajaxsolr.theme.js"></script>
+		<script type="text/javascript" src="lib/jquery.livequery.js"></script>
+		<script type="text/javascript" src="ext/jquery.autocomplete.js"></script>
+		<script type="text/javascript" src="widgets/AutocompleteWidget.js"></script>
 
 		<!-- Widget to display the list of results-->
 		<script type="text/javascript" src="ext/jquery.pagination.js"></script>
@@ -46,15 +75,6 @@
 
 		<!-- Widget to do the manual search by the text field-->
 		<script type="text/javascript" src="widgets/TextWidget.js"></script>
-
-		<!-- Required for the auto-complete widget-->
-		<!-- Not in use now! -->
-		<link rel="stylesheet" type="text/css" href="ext/jquery.autocomplete.css" media="screen" />
-		<script type="text/javascript" src="ext/jquery.autocomplete.js"></script>
-		<script type="text/javascript" src="widgets/AutocompleteWidget.js"></script>
-
-
-		<!-- Widget to select the visualization method-->
 		<script type="text/javascript" src="widgets/SimpleTabsWidget.js"></script>
 
 		<!-- Widget to select the category-->
@@ -83,24 +103,16 @@
 
 		<!-- Widget to filter by date-->
 		<script type="text/javascript" src="widgets/DateFilterWidget.js"></script>
-
-
-		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-
-		<script type='text/javascript' src='lib/d3.layout.cloud.js'></script>
-		 <script src="http://bl.ocks.org/blockspring/raw/847a40e23f68d6d7e8b5/518fd43a5efe941b38a54988f6560410aa7963cb/cloud.js" charset="utf-8"> </script>
-
-		 	<!-- Widget to display the current selection in a Bilevel Partition -->
+		
 		<script type="text/javascript" src="widgets/TreeMapWidget.js"></script>
-		<script type='text/javascript' src='lib/treemap.js'></script>
+		<script type="text/javascript" src="widgets/BilevelWidget.js"></script>
+		<!--<script type='text/javascript' src='lib/treemap.js'></script>-->
 		<!-- Which Widgets to include in the page and to start the first call-->
 		<script type="text/javascript" src="js/iticoEvents.js"></script>
 		<!-- The js theme for the results-->
 		<script type="text/javascript" src="js/itico.theme.js"></script>
+		<script src="widgets/metaGlobeMap.js"></script>
 
-
-	</head>
-	<body>
 		<div id="iann_wrap">
 
 

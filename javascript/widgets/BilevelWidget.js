@@ -1,6 +1,6 @@
 (function ($) {
         
-	AjaxSolr.TreeMapWidget = AjaxSolr.AbstractFacetWidget.extend({
+	AjaxSolr.BilevelWidget = AjaxSolr.AbstractFacetWidget.extend({
 		
 
 				  
@@ -14,7 +14,7 @@
 				var env = this;
 				
 				
-		if (Manager.currentTab==undefined || Manager.currentTab!='TreeMap Partition')
+		if (Manager.currentTab==undefined || Manager.currentTab!='Bilevel Partition')
 				return;
 			
 
@@ -22,7 +22,7 @@
 			$(this.target).empty();
 			var innerhtml='';
 			for (var i in this.field){
-				innerhtml+='					<div id="iann_partition_'+this.field[i]+'"></div>';
+				innerhtml+='					<div id="iann_bilevel_'+this.field[i]+'"></div>';
 			}	
 			$(this.target).html(innerhtml);	
 			/*
@@ -89,73 +89,93 @@
 				
 				
 				//document.write(json1);
-var w = 960,
-    h = 600,
-    x = d3.scale.linear().range([0, w]),
-    y = d3.scale.linear().range([0, h]);
+var width = 960,
+    height = 700,
+    radius = Math.min(width, height) / 2;
 
-var vis = d3.select(this.target).append("div")
-    .attr("class", "chart")
-    .style("width", w + "px")
-    .style("height", h + "px")
-  .append("svg:svg")
-    .attr("width", w)
-    .attr("height", h);
+var x = d3.scale.linear()
+    .range([0, 2 * Math.PI]);
+
+var y = d3.scale.sqrt()
+    .range([0, radius]);
+
+var color = d3.scale.category20c();
+
+var svg = d3.select(this.target).append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
 
 var partition = d3.layout.partition()
     .value(function(d) { return d.size; });
 
-d3.json("flare.json", function(root) {
-  var g = vis.selectAll("g")
+var arc = d3.svg.arc()
+    .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
+    .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
+    .innerRadius(function(d) { return Math.max(0, y(d.y)); })
+    .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
+var tooltip = d3.select(this.target)
+    .append("div")
+    .attr("class", "tooltip")
+    .style("position", "absolute")
+    .style("z-index", "10")
+    .style("opacity", 0);
+
+  function format_number(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+
+  function format_name(d) {
+    var name = d.name;
+        return  '<b>' + name;
+  }
+  
+d3.json("flare.json", function(error, root) {
+  var path = svg.selectAll("path")
       .data(partition.nodes(root))
-    .enter().append("svg:g")
-      .attr("transform", function(d) { return "translate(" + x(d.y) + "," + y(d.x) + ")"; })
-      .on("click", click);
-
-  var kx = w / root.dx,
-      ky = h / 1;
-
-  g.append("svg:rect")
-      .attr("width", root.dy * kx)
-      .attr("height", function(d) { return d.dx * ky; })
-      .attr("class", function(d) { return d.children ? "parent" : "child"; });
-
-  g.append("svg:text")
-      .attr("transform", transform)
-      .attr("dy", ".35em")
-      .style("opacity", function(d) { return d.dx * ky > 12 ? 1 : 0; })
-      .text(function(d) { return d.name; })
-
-  d3.select(window)
-      .on("click", function() { click(root); })
+    .enter().append("path")
+      .attr("d", arc)
+      .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
+      .on("click", click)
+	  .on("mouseover", function(d) {
+          tooltip.html(function() {
+              var name = format_name(d);
+              return name;
+         });
+          return tooltip.transition()
+            .duration(50)
+            .style("opacity", 0.9);
+        })
+        .on("mousemove", function(d) {
+          return tooltip
+            .style("top", (d3.event.pageY-10)+"px")
+            .style("left", (d3.event.pageX+10)+"px");
+        })
+        .on("mouseout", function(){return tooltip.style("opacity", 0);}); 
+	 
 
   function click(d) {
-    if (!d.children) return;
-
-    kx = (d.y ? w - 40 : w) / (1 - d.y);
-    ky = h / d.dx;
-    x.domain([d.y, 1]).range([d.y ? 40 : 0, w]);
-    y.domain([d.x, d.x + d.dx]);
-
-    var t = g.transition()
-        .duration(d3.event.altKey ? 7500 : 750)
-        .attr("transform", function(d) { return "translate(" + x(d.y) + "," + y(d.x) + ")"; });
-
-    t.select("rect")
-        .attr("width", d.dy * kx)
-        .attr("height", function(d) { return d.dx * ky; });
-
-    t.select("text")
-        .attr("transform", transform)
-        .style("opacity", function(d) { return d.dx * ky > 12 ? 1 : 0; });
-
-    d3.event.stopPropagation();
-  }
-
-  function transform(d) {
-    return "translate(8," + d.dx * ky / 2 + ")";
+    path.transition()
+      .duration(750)
+      .attrTween("d", arcTween(d));
   }
 });
+
+d3.select(self.frameElement).style("height", height + "px");
+
+// Interpolate the scales!
+function arcTween(d) {
+  var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+      yd = d3.interpolate(y.domain(), [d.y, 1]),
+      yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+  return function(d, i) {
+    return i
+        ? function(t) { return arc(d); }
+        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
+  };
+}
           		
 		}
 	});

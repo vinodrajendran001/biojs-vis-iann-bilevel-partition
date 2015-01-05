@@ -104,7 +104,10 @@ input.iann_field_search {
   height: 450px; 
   width: 700px; 
 }
-
+#iann_bilevel { 
+  height: 450px; 
+  width: 700px; 
+}
 
 #iann_calendar {
   width: 700px;
@@ -312,7 +315,7 @@ table.fc-border-separate {
 	background-color: #EEEEEE;
 }
 /*TREEMAP NODE*/
-div.node {
+.node {
   border: solid 1px white;
   font: 10px sans-serif;
   line-height: 12px;
@@ -320,3 +323,70 @@ div.node {
   position: absolute;
   text-indent: 2px;
 }
+
+/*sunburst */
+path {
+  stroke: #fff;
+  fill-rule: evenodd;
+}
+
+
+.tooltip {
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+
+
+
+ul.trial {
+	display:inline;
+	padding:0;
+	margin: 25px 20px;
+}
+
+ul.trial li {
+	display:inline;
+	padding:5px;
+	list-style-type:none;
+	margin:5px;
+	border: 1px solid #E2E2CE;
+}
+
+.highlight {
+	border: 1px solid #E2E2CE;
+	padding:5px;
+	margin:10px 25px;
+}
+
+
+div.offence_form {margin:10px;}
+
+table.summary {
+	margin: 20px 10px;
+	border: 1px solid #e2e2ce;
+}
+
+table.summary th {
+	padding: 2px 4px;
+	background:#e2e2ce;
+}
+table.summary td {padding:3px 8px;}
+
+.chart {
+  display: block;
+  margin: auto;
+  margin-top: 60px;
+  font-size: 11px;
+}
+
+rect {
+  stroke: #eee;
+  fill: #aaa;
+  fill-opacity: .8;
+}
+
+rect.parent {
+  cursor: pointer;
+  fill: steelblue;
+}
+
