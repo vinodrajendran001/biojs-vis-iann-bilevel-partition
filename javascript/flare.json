@@ -1,117 +1,193 @@
 {
- "name": "flare",
+ "name": "Country",
  "children": [
   {
-   "name": "analytics",
+   "name": "Austria",
    "children": [
     {
-     "name": "cluster",
+     "name": "Vienna",
      "children": [
-      {"name": "AgglomerativeCluster", "size": 3938},
-      {"name": "CommunityStructure", "size": 3812},
-      {"name": "HierarchicalCluster", "size": 6714},
-      {"name": "MergeEdge", "size": 743}
+      {"name": "17th International Neuroscience Winter Conference", "size": 3938}
      ]
-    },
+    }, 
     {
-     "name": "graph",
+     "name": "Soelden",
      "children": [
-      {"name": "BetweennessCentrality", "size": 3534},
-      {"name": "LinkDistance", "size": 5731},
-      {"name": "MaxFlowMinCut", "size": 7840},
-      {"name": "ShortestPaths", "size": 5914},
-      {"name": "SpanningTree", "size": 3416}
-     ]
-    },
-    {
-     "name": "optimization",
-     "children": [
-      {"name": "AspectRatioBanker", "size": 7074}
+      {"name": "Advanced Course on Cryo-Electron Tomoga­ra­phy", "size": 7074}
      ]
     }
    ]
   },
   {
-   "name": "animate",
-   "children": [
-    {"name": "Easing", "size": 17010},
-    {"name": "FunctionSequence", "size": 5842},
-    {
-     "name": "interpolate",
-     "children": [
-      {"name": "ArrayInterpolator", "size": 1983},
-      {"name": "ColorInterpolator", "size": 2047},
-      {"name": "DateInterpolator", "size": 1375},
-      {"name": "Interpolator", "size": 8746},
-      {"name": "MatrixInterpolator", "size": 2202},
-      {"name": "NumberInterpolator", "size": 1382},
-      {"name": "ObjectInterpolator", "size": 1629},
-      {"name": "PointInterpolator", "size": 1675},
-      {"name": "RectangleInterpolator", "size": 2042}
-     ]
-    },
-    {"name": "ISchedulable", "size": 1041},
-    {"name": "Parallel", "size": 5176},
-    {"name": "Pause", "size": 449},
-    {"name": "Scheduler", "size": 5593},
-    {"name": "Sequence", "size": 5534},
-    {"name": "Transition", "size": 9201},
-    {"name": "Transitioner", "size": 19975},
-    {"name": "TransitionEvent", "size": 1116},
-    {"name": "Tween", "size": 6006}
-   ]
-  },
-  {
-   "name": "data",
+   "name": "Australia",
    "children": [
     {
-     "name": "converters",
+     "name": "Perth",
      "children": [
-      {"name": "Converters", "size": 721},
-      {"name": "DelimitedTextConverter", "size": 4294},
-      {"name": "GraphMLConverter", "size": 9800},
-      {"name": "IDataConverter", "size": 1314},
-      {"name": "JSONConverter", "size": 2220}
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Brazil",
+   "children": [
+    {
+     "name": "Ouro Preto",
+     "children": [
+      {"name": "Co-Infection: A Global Challenge for Disease Control", "size": 721}
+      
+     ]
+    }
+   ]
+  },
+   {
+   "name": "Canada",
+   "children": [
+    {
+     "name": "British Columbia",
+     "children": [
+      {"name": "Genomic Instability and DNA Repair", "size": 3938}
+     ]
+    }, 
+    {
+     "name": "Montreal",
+     "children": [
+      {"name": "3rd World Congress on Controversies, Debates and Consensus in Bone, Muscle and Joint Diseases (BMJD) under the auspices of the IOF and ESCEO", "size": 7074},
+	  {"name": "Dendritic Cells and Macrophages Reunited", "size": 7074}
      ]
     },
-    {"name": "DataField", "size": 1759},
-    {"name": "DataSchema", "size": 2165},
-    {"name": "DataSet", "size": 586},
-    {"name": "DataSource", "size": 3331},
-    {"name": "DataTable", "size": 772},
-    {"name": "DataUtil", "size": 3322}
+    {
+     "name": "Alberta",
+     "children": [
+      {"name": "The Golden Anniversary of B Cell Discovery", "size": 7074},
+	  {"name": "HIV Vaccines", "size": 7074}
+     ]
+    },
+    {
+     "name": "Whistler",
+     "children": [
+      {"name": "Obesity and the Metabolic Syndrome: Mitochondria and Energy Expenditure", "size": 7074}
+     ]
+    },
+    {
+     "name": "Hamilton",
+     "children": [
+      {"name": "Electron Microscopy", "size": 7074}
+     ]
+    }	 
    ]
   },
   {
-   "name": "display",
+   "name": "China",
    "children": [
-    {"name": "DirtySprite", "size": 8833},
-    {"name": "LineSprite", "size": 1732},
-    {"name": "RectSprite", "size": 3623},
-    {"name": "TextSprite", "size": 10066}
+    {
+     "name": "Suzhou",
+     "children": [
+      {"name": "2015 Conference on Tissue Engineering and Regenerative Medicine", "size": 3938},
+	  {"name": "2015 Microbiology and Immunology Conference", "size": 3938},
+	  {"name": "2015 Conference on Advances in Prevention and Treatment of Cancer", "size": 3938},
+	  {"name": "2015 Conference on Laboratory Medicine and Clinical Research", "size": 3938},	  
+	  {"name": "2015 International Conference on Pathology", "size": 3938},
+	  {"name": "Lipid Metabolism and Human Metabolic Disorders", "size": 3938}
+     ]
+    },
+	{
+     "name": "Shenyang",
+     "children": [
+      {"name": "1st Annual International Pharmaceutical Engineering Symposium 2015", "size": 3938}
+     ]
+    },
+	{
+     "name": "Shanghai",
+     "children": [
+      {"name": "The 2nd Asia Pacific Congress on Controversies to Consensus in Diabetes, Obesity and Hypertension", "size": 3938},
+	  {"name": "Phage & Yeast Display", "size": 3938},
+	  {"name": "Asian Oncology Summit 2015", "size": 3938}
+     ]
+    },
+		{
+     "name": "Nangjing",
+     "children": [
+      {"name": "Protein & Peptide conference", "size": 3938}
+     ]
+    }
+	
    ]
   },
   {
-   "name": "flex",
+   "name": "Costa Rica",
    "children": [
-    {"name": "FlareVis", "size": 4116}
+	{
+     "name": "San Josa",
+     "children": [
+      {"name": "Genomics and Epidemiological Surveillance of Bacterial Pathogens", "size": 3938}
+     ]
+    }
    ]
   },
-  {
-   "name": "physics",
+   {
+   "name": "Germany",
    "children": [
-    {"name": "DragForce", "size": 1082},
-    {"name": "GravityForce", "size": 1336},
-    {"name": "IForce", "size": 319},
-    {"name": "NBodyForce", "size": 10498},
-    {"name": "Particle", "size": 2822},
-    {"name": "Simulation", "size": 9983},
-    {"name": "Spring", "size": 2213},
-    {"name": "SpringForce", "size": 1681}
+	{
+     "name": "Leimen",
+     "children": [
+      {"name": "Genomics and Epidemiological Surveillance of Bacterial Pathogens", "size": 3938}
+     ]
+    },
+		{
+     "name": "Rostock",
+     "children": [
+      {"name": "Genomics and Epidemiological Surveillance of Bacterial Pathogens", "size": 3938}
+     ]
+    },
+		{
+     "name": "Dusseldorf",
+     "children": [
+      {"name": "Genomics and Epidemiological Surveillance of Bacterial Pathogens", "size": 3938}
+     ]
+    },
+		{
+     "name": "Cologne",
+     "children": [
+      {"name": "Genomics and Epidemiological Surveillance of Bacterial Pathogens", "size": 3938}
+     ]
+    },
+		{
+     "name": "Heidelberg",
+     "children": [
+      {"name": "Genomics and Epidemiological Surveillance of Bacterial Pathogens", "size": 3938}
+     ]
+    },
+	{
+     "name": "Berlin",
+     "children": [
+      {"name": "Genomics and Epidemiological Surveillance of Bacterial Pathogens", "size": 3938}
+     ]
+    },
+	{
+     "name": "Mannheim",
+     "children": [
+      {"name": "Genomics and Epidemiological Surveillance of Bacterial Pathogens", "size": 3938}
+     ]
+    },
+	{
+     "name": "Munich",
+     "children": [
+      {"name": "Genomics and Epidemiological Surveillance of Bacterial Pathogens", "size": 3938}
+     ]
+    },
+	{
+     "name": "Mainz",
+     "children": [
+      {"name": "Genomics and Epidemiological Surveillance of Bacterial Pathogens", "size": 3938}
+     ]
+    }
    ]
   },
   {
-   "name": "query",
+   "name": "Greece",
    "children": [
     {"name": "AggregateExpression", "size": 1616},
     {"name": "And", "size": 1027},
@@ -181,7 +257,7 @@
    ]
   },
   {
-   "name": "scale",
+   "name": "Hungary",
    "children": [
     {"name": "IScaleMap", "size": 2105},
     {"name": "LinearScale", "size": 1316},
@@ -196,7 +272,7 @@
    ]
   },
   {
-   "name": "util",
+   "name": "India",
    "children": [
     {"name": "Arrays", "size": 8258},
     {"name": "Colors", "size": 10001},
@@ -241,7 +317,7 @@
    ]
   },
   {
-   "name": "vis",
+   "name": "Ireland",
    "children": [
     {
      "name": "axis",
@@ -374,6 +450,258 @@
      ]
     },
     {"name": "Visualization", "size": 16540}
+   ]
+  },
+    {
+   "name": "Israel",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },
+    {
+   "name": "Italy",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },
+    {
+   "name": "Japan",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },
+    {
+   "name": "Malawi",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },
+    {
+   "name": "Malaysia",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },
+    {
+   "name": "Mexico",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },
+    {
+   "name": "Morocco",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },
+    {
+   "name": "Netherlands",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },
+    {
+   "name": "Poland",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },
+    {
+   "name": "Portugal",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },
+    {
+   "name": "Qatar",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },
+  {
+   "name": "South Africa",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },    
+  {
+   "name": "South Korea",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },    
+  {
+   "name": "Spain",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },    
+  {
+   "name": "Sweden",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },    
+  {
+   "name": "Switzerland",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },    
+  {
+   "name": "Taiwan",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },   
+  {
+   "name": "Thailand",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },   
+  {
+   "name": "United States",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },    
+  {
+   "name": "United Arab Emirates",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
+   ]
+  },    
+  {
+   "name": "United Kingdom",
+   "children": [
+    {
+     "name": "Perth",
+     "children": [
+      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
+      
+     ]
+    }
    ]
   }
  ]
