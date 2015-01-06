@@ -155,7 +155,6 @@ var Manager;
 			chartTitle: ['Categories','Location','Institutions', 'Keywords'],
 			field: ['field','country','provider','keyword']
 		}));
-		TREEMAP
 		Manager.addWidget(new AjaxSolr.TreeMapWidget({
 		id: 'partition',
 		target: '#iann_partition',
