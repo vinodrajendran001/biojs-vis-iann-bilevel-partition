@@ -115,12 +115,12 @@ var arc = d3.svg.arc()
     .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
     .innerRadius(function(d) { return Math.max(0, y(d.y)); })
     .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
-var tooltip = d3.select(this.target)
-    .append("div")
-    .attr("class", "tooltip")
-    .style("position", "absolute")
-    .style("z-index", "10")
-    .style("opacity", 0);
+// var tooltip = d3.select(this.target)
+//     .append("div")
+//     .attr("class", "tooltip")
+//     .style("position", "absolute")
+//     .style("z-index", "10")
+//     .style("opacity", 0);
 
   function format_number(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -140,20 +140,19 @@ d3.json("flare.json", function(error, root) {
       .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
       .on("click", click)
 	  .on("mouseover", function(d) {
-          tooltip.html(function() {
-              var name = format_name(d);
-              return name;
-         });
-          return tooltip.transition()
-            .duration(50)
-            .style("opacity", 0.9);
+         //  tooltip.html(function() {
+         //      var name = format_name(d);
+         //      return name;
+         // });
+	  		tooltip.show([d3.event.clientX,d3.event.clientY],'<div>'+d.name+'</div><div>'+d.value+'</div>');
+         
         })
         .on("mousemove", function(d) {
-          return tooltip
-            .style("top", (d3.event.pageY-10)+"px")
-            .style("left", (d3.event.pageX+10)+"px");
+           // return container
+           //   .style("top", (d3.event.pageY-10)+"px")
+           //   .style("left", (d3.event.pageX+10)+"px");
         })
-        .on("mouseout", function(){return tooltip.style("opacity", 0);}); 
+        .on("mouseout", function(){return tooltip.cleanup();}); 
 	 
 
   function click(d) {
@@ -164,6 +163,69 @@ d3.json("flare.json", function(error, root) {
 });
 
 d3.select(self.frameElement).style("height", height + "px");
+
+
+(function() {
+  var tooltip = window.tooltip = {};
+  tooltip.show = function(pos, content, gravity, dist, parentContainer, classes) {
+    var container = d3.select('body').selectAll('.tooltip').data([1]);
+        container.enter().append('div').attr('class', 'tooltip ' + (classes ? classes : 'xy-tooltip'));
+        container.html(content);
+    gravity = gravity || 'n';
+    dist = dist || 20;
+    var body = document.getElementsByTagName('body')[0];
+    var height = parseInt(container[0][0].offsetHeight);
+      var width = parseInt(container[0][0].offsetWidth);
+      var windowWidth = window.innerWidth;
+      var windowHeight = window.innerHeight;
+      var scrollTop = body.scrollTop;
+      var scrollLeft = body.scrollLeft;
+      var left = 0;
+      var top = 0;
+    
+    switch (gravity) {
+      case 'e':
+        left = pos[0] - width - dist;
+        top = pos[1] - (height / 2);
+        if (left < scrollLeft) left = pos[0] + dist;
+        if (top < scrollTop) top = scrollTop + 5;
+        if (top + height > scrollTop + windowHeight) top = scrollTop - height - 5;
+        break;
+      case 'w':
+        left = pos[0] + dist;
+        top = pos[1] - (height / 2);
+        if (left + width > windowWidth) left = pos[0] - width - dist;
+        if (top < scrollTop) top = scrollTop + 5;
+        if (top + height > scrollTop + windowHeight) top = scrollTop - height - 5;
+        break;
+      case 's':
+        left = pos[0] - (width / 2);
+        top = pos[1] + dist;
+        if (left < scrollLeft) left = scrollLeft + 5;
+        if (left + width > windowWidth) left = windowWidth - width - 5;
+        if (top + height > scrollTop + windowHeight) top = pos[1] - height - dist;
+        break;
+      case 'n':
+        left = pos[0] - (width / 2);
+        top = pos[1] - height - dist;
+        if (left < scrollLeft) left = scrollLeft + 5;
+        if (left + width > windowWidth) left = windowWidth - width - 5;
+        if (scrollTop > top) top = pos[1] + 20;
+        break;
+    }
+    container.style('left', left+'px');
+    container.style('top', top+'px');
+    return container;
+  };
+  
+  tooltip.cleanup = function() {
+      // Find the tooltips, mark them for removal by this class (so other tooltip functions won't find it)
+      var tooltips = d3.selectAll('.tooltip').attr('class','tooltip-pending-removal').transition().duration(250).style('opacity',0).remove();
+	  var textMiddleClean = d3.selectAll('.textMiddle').transition().duration(250).style('opacity',0).remove();
+  };
+})();
+
+
 
 // Interpolate the scales!
 function arcTween(d) {

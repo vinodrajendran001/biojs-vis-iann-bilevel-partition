@@ -390,3 +390,28 @@ rect.parent {
   fill: steelblue;
 }
 
+.tooltip, .tooltip-pending-removal {
+  position: absolute;
+  background-color: rgba(255,255,255,1);
+  padding: 10px;
+  border: 1px solid #ddd;
+  z-index: 10000;
+  display: inline-block;
+  font-family: Arial;
+  font-size: 13px;
+  border-radius: 10px;
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.tooltip {
+  transition: opacity 500ms linear;
+  -webkit-transition: opacity 500ms linear;
+  transition-delay: 500ms;
+  -webkit-transition-delay: 500ms;
+  -moz-box-shadow: 4px 4px 8px rgba(0,0,0,.5);
+  -webkit-box-shadow: 4px 4px 8px rgba(0,0,0,.5);
+  box-shadow: 4px 4px 8px rgba(0,0,0,.5);
+}
+
