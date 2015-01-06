@@ -154,7 +154,7 @@ d3.json("flare.json", function(error, root) {
          //      var name = format_name(d);
          //      return name;
          // });
-	  		tooltip.show([d3.event.clientX,d3.event.clientY],'<div>'+d.name+'</div><div>'+d.value+'</div>');
+	  		tooltip.show([d3.event.clientX,d3.event.clientY],'<div>'+d.name+'</div>');
          
         })
         .on("mousemove", function(d) {
