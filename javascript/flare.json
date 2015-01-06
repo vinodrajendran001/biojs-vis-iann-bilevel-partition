@@ -187,90 +187,19 @@
    ]
   },
   {
-   "name": "United States",
-   "children": [
-    {
-     "name": "Knoxville",
-     "children": [
-      {"name": "Lymphoid Cells in Acute Inflammation", "size": 721}
-      
-     ]
-    },
-    {
-     "name": "San Diego",
-     "children": [
-      {"name": "Protein Engineering & Development", "size": 721},
-	  {"name": "Formulation & Stability", "size": 721},
-	  {"name": "Antibody Therapeutics", "size": 721},
-	  {"name": "Process Technologies & Purification", "size": 721},
-	  {"name": "Analytics & Impurities", "size": 721},
-	  {"name": "Single-Use Technologies and Continuous Processing", "size": 721},
-	  {"name": "High-Content Analysis& Phenotypic Screening", "size": 721}
-	  
-      
-     ]
-    },
-    {
-     "name": "Los Angeles",
-     "children": [
-      {"name": "Advances in Nuclear Cardiology and Cardiac CT: 30th Annual Case Review with the Experts with 101 Evidence-Based Cases", "size": 721}
-      
-     ]
-    },
-    {
-     "name": ",Baltimore",
-     "children": [
-      {"name": "Biophysical Society 59th Annual Meeting", "size": 721}
-      
-     ]
-    },
-    {
-     "name": "Knoxville",
-     "children": [
-      {"name": "    30th International Conference of Alzheimer's Disease International", "size": 721}
-      
-     ]
-    },
-    {
-     "name": "San Francisco",
-     "children": [
-      {"name": "Circulating Tumor Cells", "size": 721},
-	  {"name": "Personalized Diagnostics", "size": 721}
-      
-     ]
-    },
-    {
-     "name": "Orlando",
-     "children": [
-      {"name": "QbD and Risk Assessment for Clinical Trial Conduct", "size": 721}
-      
-     ]
-    },
-    {
-     "name": "Colorado",
-     "children": [
-      {"name": "Cell Biology of the Heart: Beyond the Myocyte-Centric View", "size": 721}
-      
-     ]
-    }	
-   ]
-  },    
-  {
    "name": "United Kingdom",
    "children": [
     {
      "name": "Norwich",
      "children": [
       {"name": "Bioinformatics for Life Scientists", "size": 721}
-      
      ]
     },
     {
      "name": "London",
      "children": [
       {"name": "The 2015 Controlling Cancer Summit ", "size": 721},
-	   {"name": "The 2nd Microbiome Forum: europe", "size": 721}
-      
+	  {"name": "The 2nd Microbiome Forum: europe", "size": 721} 
      ]
     }	
    ]
