@@ -98,12 +98,11 @@ var g = svgMap.append('g');
 
 
 //Rotate to default before animation
-
 var locations = svgMap.append('g')
           .attr('id', 'locations');
 
-        // Having defined the projection, update the backgroundCircle radius:
-      backgroundCircle.attr('r', projection.scale() );
+// Having defined the projection, update the backgroundCircle radius:
+ backgroundCircle.attr('r', projection.scale() );
 
 
 
@@ -276,7 +275,8 @@ var world = g.selectAll('path')
     .origin(function() { var r = projection.rotate(); return {x: r[0] / sens, y: -r[1] / sens}; })
     .on("drag", function() {
 
-      if(equirectangular) return;
+      //No drag when we are in equi and zoomed modes
+      if(equirectangular || zoom2D) return;
 
       var lambda = d3.event.x * sens,
       phi = -d3.event.y * sens,
@@ -296,33 +296,21 @@ var world = g.selectAll('path')
 
 
   //Events processing
-  var toplist = zoneTooltip.append("ul").attr("class","zoneTooltipList");
+  var eventList = zoneTooltip.append("ul").attr("class","zoneTooltipList");
 
-  world.on("mouseover", function(d) {
-    //if (zoom2D === false) {
-     
-          infoLabel.text(d.properties.name)
-            .style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY) + "px")
-            .style("display", "inline");
+  world.on("mouseover", function(d) {     
+      infoLabel.text(d.properties.name)
+        .style("left", (d3.event.pageX) + "px")
+        .style("top", (d3.event.pageY) + "px")
+        .style("display", "inline");
 
-    //} 
-   
-      
-   // }
   })
   .on("mouseout", function(d) {
-   // if (ortho === true) {
       infoLabel.style("display", "none");
-   // } else {
-      //zoneTooltip.style("display", "none");
-//}
   })
   .on("mousemove", function() {
-   // if (ortho === false) {
       infoLabel.style("left", (d3.event.pageX + 7) + "px")
                .style("top", (d3.event.pageY - 15) + "px");
-   // }
   })
   .on("dblclick", function(d) {
 
@@ -357,6 +345,7 @@ var world = g.selectAll('path')
 
         plotMarkers();
         g.selectAll(".focused").classed("focused", false);
+        zoneTooltip.style("display", "none");
 
       }
 
@@ -413,19 +402,14 @@ var world = g.selectAll('path')
           function heres() {
 
             zoomin2D(d);
-
+            createEventList(d);
           };
 
           heres();
         }, time);
-
-        tooltipCreate(d);
-
        
   }
 
-
-///
 
 labelEnter.append("input")
     .attr({
@@ -435,16 +419,15 @@ labelEnter.append("input")
         value: function(d, i) {return i;}
     })
     .property("checked", function(d, i) {
-        //equirectangular = (i === 0)?true : false;
-        //console.log("selection kya hai="+equirectangular);
         return (i===j); 
     })
     .on("click", function(d,i) { 
         
         equirectangular = (i === 0) ? false : true;
-        console.log("click pe value="+equirectangular);
+        
+        if(zoom2D) return;
 
-        if(i === 1){
+        if( i === 1){
        
             openGlobe();
 
@@ -470,6 +453,9 @@ function zoomin2D(d)
     x = centroid[0];
     y = centroid[1];
     k = 3;
+
+    //if(!equirectangular) k = 2;
+
     centered = d;
   } else {
     x = mapWidth / 2;
@@ -502,18 +488,18 @@ function zoomin2D(d)
 
 }
   ///TEST
-
   var selectionCountries = d3.select("select");//.data(collectionCountries);
 
   selectionCountries.on("change", function(d) {
         
-      if(equirectangular) return;
+
+      if(zoom2D) return;
 
       var rotate = projection.rotate(),
       focusedCountry = country(countries, this),
       p = d3.geo.centroid(focusedCountry);
 
-      console.log("change=="+JSON.stringify(focusedCountry));
+      //console.log("change=="+JSON.stringify(focusedCountry));
 
       svgMap.selectAll(".focused").classed("focused", focused = false);
 
@@ -524,18 +510,36 @@ function zoomin2D(d)
       .tween("rotate", function() {
         var r = d3.interpolate(projection.rotate(), [-p[0], -p[1]]);
         return function(t) {
-          projection.rotate(r(t));
+          if(!equirectangular) projection.rotate(r(t));
           svgMap.selectAll("path").attr("d", path)
           .classed("focused", function(d, i) { return d.id == focusedCountry.id ? focused = d : false; });
           
 
         };
-      })
+      });
+
+      if(!equirectangular) {
+          
+        //optional feature: Zoom in when country is selected from  drop down list.
+        setTimeout(function() {
+          function heres(d) {
+
+            //openGlobe();
+            backgroundCircle.transition().duration(5000).style("display", "none");
+
+            zoomGlobe(d, false);
+
+          };
+
+          heres(focusedCountry);
+        }, 2800);
+
+      }
+
       })();
 
-      //openGlobe();
-      //zoomGlobe(focusedCountry, true);
-      //tooltipCreate(focusedCountry);
+
+      if(equirectangular) zoomGlobe(focusedCountry, false);
       
     });
 
@@ -545,11 +549,6 @@ function zoomin2D(d)
         if(cnt[i].properties.name.indexOf(sel.value) >-1) {return cnt[i];}
       }
     };
-
-
-
-  ///TEST
-
 
 
   //Adding extra data when focused
@@ -565,10 +564,8 @@ function zoomin2D(d)
     infoLabel.style("display", "none");
     zoneTooltip.style("display", "none");
 
-    //Transforming Map to Globe
-
+    //Transforming Map to Globe and plotting markers
     plotMarkers();
-
 
     projection = projectionGlobe;
     path.projection(projection);
@@ -583,8 +580,8 @@ function zoomin2D(d)
 
   }
 
-  function tooltipCreate(d){
-    $(toplist).empty();
+  function createEventList(d){
+    $(eventList).empty();
 
     var countryHasEvents = false;
 
@@ -603,7 +600,7 @@ function zoomin2D(d)
             
             var here = "<a href="+doc.link+" class=iann_item_title>"+doc.title+"</a><br><span class=iann_item_date>"+doc.start+"-"+doc.end+"</span><br><span class=iann_item_place>"+doc.provider+","+doc.city+","+doc.country+"</span><br><span class=iann_item_author>"+doc.submission_organization+"</span>";
 
-           toplist.append("li").html(here);
+           eventList.append("li").html(here);
 
            countryHasEvents = true;
             
@@ -616,9 +613,11 @@ function zoomin2D(d)
     if(countryHasEvents){
 
         zoneTooltip
-          .style("left", (d3.event.pageX + 7) + "px")
-          .style("top", (d3.event.pageY - 15) + "px")
+          //.style("left", (d3.event.pageX + 7) + "px")
+          //.style("top", (d3.event.pageY - 15) + "px")
           .style("display", "block");
+
+
 
     }
      
