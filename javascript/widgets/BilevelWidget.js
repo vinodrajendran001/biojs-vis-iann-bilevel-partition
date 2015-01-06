@@ -139,8 +139,8 @@ d3.json("flare.json", function(error, root) {
       .attr("r", radius / 3)
       .on("click", zoomOut);
 
-  center.append("title")
-      .text("zoom out");
+  // center.append("title")
+  //     .text("zoom out");
 
   var path = svg.selectAll("path")
       .data(partition.nodes(root).slice(1))
@@ -218,6 +218,20 @@ d3.json("flare.json", function(error, root) {
           .style("fill-opacity", function(d) { return d.depth === 2 - (root === p) ? 1 : 0; })
           .style("fill", function(d) { return d.fill; })
           .on("click", zoomIn)
+          .on("mouseover", function(d) {
+         //  tooltip.html(function() {
+         //      var name = format_name(d);
+         //      return name;
+         // });
+	  		tooltip.show([d3.event.clientX,d3.event.clientY],'<div>'+d.name+'</div>');
+         
+        })
+        .on("mousemove", function(d) {
+           // return container
+           //   .style("top", (d3.event.pageY-10)+"px")
+           //   .style("left", (d3.event.pageX+10)+"px");
+        })
+        .on("mouseout", function(){return tooltip.cleanup();}) 
           .each(function(d) { this._current = enterArc(d); });
 
       path.transition()
